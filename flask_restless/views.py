@@ -995,6 +995,8 @@ class API(ModelView):
             self.session.delete(inst)
             self.session.commit()
             is_deleted = True
+        else:
+            abort(404)
         try:
             for postprocessor in self.postprocessors['DELETE']:
                 postprocessor(is_deleted)
